@@ -2,6 +2,7 @@ import 'package:everyone_know_app/color/app_color.dart';
 import 'package:everyone_know_app/cubit/navigation_cubit_cubit.dart';
 import 'package:everyone_know_app/local/fake_locations.dart';
 import 'package:everyone_know_app/mixin/manual_navigator.dart';
+import 'package:everyone_know_app/screen/home/status_view.dart';
 import 'package:everyone_know_app/utils/enums/navbar_item.dart';
 import 'package:everyone_know_app/utils/size/size.dart';
 import 'package:everyone_know_app/view/auth/choose_region_view.dart';
@@ -172,7 +173,17 @@ class _HomeScreenState extends State<HomeScreen> with ManualNavigatorMixin {
                         (MediaQuery.of(context).size.height / 1.2),
                   ),
                   itemBuilder: (ctx, index) {
-                    return friendOfferGridItem();
+                    return GestureDetector(
+                      onTap: () {
+                        manualNavigatorTransition(
+                          context,
+                          const StatusViewScreen(
+                            checkUserStory: true,
+                          ),
+                        );
+                      },
+                      child: friendOfferGridItem(),
+                    );
                   },
                 ),
               ),

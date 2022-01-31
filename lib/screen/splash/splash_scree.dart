@@ -45,27 +45,27 @@ class _SplashScreenState extends State<SplashScreen> with ManualNavigatorMixin {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: EdgeInsets.only(
                         top: 30,
-                        left: 40,
+                        left: screenWidth(context, 0.1),
                       ),
-                      child: SplashImageWidget(
+                      child: const SplashImageWidget(
                         imageUrl:
                             "https://st.depositphotos.com/1006706/2671/i/600/depositphotos_26715369-stock-photo-which-way-to-choose-3d.jpg",
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: EdgeInsets.only(
-                        left: 12,
-                        bottom: 30,
+                        left: 5,
+                        bottom: screenHeight(context, 0.08),
                       ),
-                      child: SplashImageWidget(
+                      child: const SplashImageWidget(
                         widthSize: 82,
                         heightSize: 82,
                         imageUrl:
@@ -73,14 +73,14 @@ class _SplashScreenState extends State<SplashScreen> with ManualNavigatorMixin {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: EdgeInsets.only(
                         right: 12,
-                        bottom: 30,
+                        bottom: screenHeight(context, 0.06),
                       ),
-                      child: SplashImageWidget(
+                      child: const SplashImageWidget(
                         widthSize: 54,
                         heightSize: 54,
                         imageUrl:
@@ -88,14 +88,14 @@ class _SplashScreenState extends State<SplashScreen> with ManualNavigatorMixin {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
                       padding: EdgeInsets.only(
-                        right: 50,
-                        bottom: 60,
+                        right: screenWidth(context, 0.13),
+                        bottom: screenHeight(context, 0.08),
                       ),
-                      child: SplashImageWidget(
+                      child: const SplashImageWidget(
                         widthSize: 96,
                         heightSize: 96,
                         imageUrl:
@@ -108,7 +108,7 @@ class _SplashScreenState extends State<SplashScreen> with ManualNavigatorMixin {
                     child: Padding(
                       padding: EdgeInsets.only(
                         top: screenHeight(context, 0.25),
-                        left: 90,
+                        left: screenWidth(context, 0.25),
                       ),
                       child: const SplashImageWidget(
                         widthSize: 55,

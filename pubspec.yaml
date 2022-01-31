@@ -38,6 +38,9 @@ dependencies:
   pin_code_fields: ^7.3.0
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  story_viewer: ^0.1.0
+  google_fonts: ^2.2.0
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:

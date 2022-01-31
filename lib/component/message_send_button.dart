@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 class MessageSendButton extends StatelessWidget {
   final VoidCallback? sendMessage, imageSelect;
+  final bool? hideImageIcon;
   const MessageSendButton({
     Key? key,
     this.sendMessage,
     this.imageSelect,
+    this.hideImageIcon = false,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class MessageSendButton extends StatelessWidget {
         margin: const EdgeInsets.only(left: 26, right: 26),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(66),
+          color: Colors.white,
           border: Border.all(
             width: 1.2,
             color: const Color.fromRGBO(41, 41, 44, 0.12),
@@ -47,14 +50,16 @@ class MessageSendButton extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8),
               child: Row(
                 children: [
-                  IconButton(
-                    onPressed: imageSelect,
-                    icon: const Icon(
-                      Icons.photo_outlined,
-                      size: 22,
-                      color: textColorGrey,
-                    ),
-                  ),
+                  hideImageIcon == true
+                      ? const SizedBox()
+                      : IconButton(
+                          onPressed: imageSelect,
+                          icon: const Icon(
+                            Icons.photo_outlined,
+                            size: 22,
+                            color: textColorGrey,
+                          ),
+                        ),
                   const SizedBox(
                     width: 12,
                   ),

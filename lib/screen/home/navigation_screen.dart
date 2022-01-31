@@ -1,5 +1,6 @@
 import 'package:everyone_know_app/color/app_color.dart';
 import 'package:everyone_know_app/cubit/navigation_cubit_cubit.dart';
+import 'package:everyone_know_app/mixin/manual_navigator.dart';
 import 'package:everyone_know_app/screen/profile/profile_screen.dart';
 import 'package:everyone_know_app/screen/home/addStatus_screen.dart';
 import 'package:everyone_know_app/screen/home/home_screen.dart';
@@ -15,7 +16,8 @@ class NavigationScreen extends StatefulWidget {
   _NavigationScreenState createState() => _NavigationScreenState();
 }
 
-class _NavigationScreenState extends State<NavigationScreen> {
+class _NavigationScreenState extends State<NavigationScreen>
+    with ManualNavigatorMixin {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -60,8 +62,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
                 BlocProvider.of<NavigationCubitCubit>(context)
                     .getNavBarItem(NavbarItem.home);
               } else if (index == 1) {
-                BlocProvider.of<NavigationCubitCubit>(context)
-                    .getNavBarItem(NavbarItem.addSatus);
+                manualNavigatorTransition(
+                  context,
+                  const AddStatusScreen(),
+                );
               } else if (index == 2) {
                 BlocProvider.of<NavigationCubitCubit>(context)
                     .getNavBarItem(NavbarItem.message);
@@ -74,8 +78,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
         builder: (context, state) {
           if (state.navbarItem == NavbarItem.home) {
             return const HomeScreen();
-          } else if (state.navbarItem == NavbarItem.addSatus) {
-            return const AddStatusScreen();
           } else if (state.navbarItem == NavbarItem.message) {
             return const MessageScreen();
           } else if (state.navbarItem == NavbarItem.profile) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextView extends StatelessWidget {
   final String? textPaste;
@@ -6,6 +7,7 @@ class CustomTextView extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? textColor;
   final TextAlign? textAlign;
+  final TextDecoration? textDecoration;
   const CustomTextView({
     Key? key,
     required this.textPaste,
@@ -13,6 +15,7 @@ class CustomTextView extends StatelessWidget {
     this.fontWeight,
     this.textColor,
     this.textAlign,
+    this.textDecoration,
   }) : super(key: key);
 
   @override
@@ -20,10 +23,13 @@ class CustomTextView extends StatelessWidget {
     return Text(
       textPaste!,
       textAlign: textAlign ?? TextAlign.start,
-      style: TextStyle(
-        fontSize: textSize,
-        fontWeight: fontWeight,
-        color: textColor,
+      style: GoogleFonts.montserrat(
+        textStyle: TextStyle(
+          fontSize: textSize,
+          decoration: textDecoration,
+          fontWeight: fontWeight,
+          color: textColor,
+        ),
       ),
     );
   }

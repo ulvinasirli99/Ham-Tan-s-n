@@ -4,9 +4,11 @@ import 'package:everyone_know_app/mixin/manual_navigator.dart';
 import 'package:everyone_know_app/screen/auth/otp_verfication.dart';
 import 'package:everyone_know_app/utils/formatter/formatters.dart';
 import 'package:everyone_know_app/utils/size/size.dart';
+import 'package:everyone_know_app/utils/validator/validations.dart';
 import 'package:everyone_know_app/view/text/text_view.dart';
 import 'package:everyone_know_app/widget/custom_back_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -81,6 +83,9 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                               Expanded(
                                 child: TextFormField(
                                   keyboardType: TextInputType.number,
+                                  validator: (value) {
+                                    return validateEmail(value!);
+                                  },
                                   inputFormatters: [
                                     maskFormatter,
                                   ],
@@ -91,6 +96,7 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                                   ),
                                   decoration: const InputDecoration(
                                     hintText: "(00) 000-00-00",
+                                    errorStyle: TextStyle(height: 0),
                                     border: InputBorder.none,
                                     counterStyle: TextStyle(
                                       fontSize: 25,
@@ -118,10 +124,15 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                           child: CustomButton(
                             buttonTextPaste: "Göndər",
                             callback: () {
-                              manualNavigatorTransition(
-                                context,
-                                const OtpVerficationScreen(),
-                              );
+                              if (formGlobalKey.currentState!.validate()) {
+                                manualNavigatorTransition(
+                                  context,
+                                  const OtpVerficationScreen(),
+                                );
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: "Zəhmət olmasa nömrənizi girin.");
+                              }
                             },
                           ),
                         ),
