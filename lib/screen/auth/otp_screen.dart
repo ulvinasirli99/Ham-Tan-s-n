@@ -83,9 +83,6 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                               Expanded(
                                 child: TextFormField(
                                   keyboardType: TextInputType.number,
-                                  validator: (value) {
-                                    return validateEmail(value!);
-                                  },
                                   inputFormatters: [
                                     maskFormatter,
                                   ],
@@ -124,15 +121,10 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                           child: CustomButton(
                             buttonTextPaste: "Göndər",
                             callback: () {
-                              if (formGlobalKey.currentState!.validate()) {
-                                manualNavigatorTransition(
-                                  context,
-                                  const OtpVerficationScreen(),
-                                );
-                              } else {
-                                Fluttertoast.showToast(
-                                    msg: "Zəhmət olmasa nömrənizi girin.");
-                              }
+                              manualNavigatorTransition(
+                                context,
+                                const OtpVerficationScreen(),
+                              );
                             },
                           ),
                         ),

@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.everyone_know_app">
+      <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="Hamı Tanısın"
         android:name="${applicationName}"
