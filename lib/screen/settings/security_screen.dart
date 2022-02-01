@@ -68,6 +68,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
               child: RegisterFormView(
                 formName: "Mobil nömrəniz",
                 maskFormatterCheck: true,
+                 formFieldBackColor: customTextFormFieldBackColor,
                 editableEditText: false,
                 textInputType: TextInputType.number,
                 formHintText: "+994 (55) 555-55-55",
@@ -107,6 +108,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 editableEditText: false,
                 textInputType: TextInputType.number,
                 formHintText: "Tərtər",
+                 formFieldBackColor: customTextFormFieldBackColor,
                 hintFontSize: 14,
               ),
             ),

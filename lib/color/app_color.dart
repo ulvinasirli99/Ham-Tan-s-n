@@ -21,3 +21,6 @@ const Color profileEditImageColor = Color.fromRGBO(180, 132, 240, 1);
 const Color securitySwitchIconColor = Color.fromRGBO(43, 226, 73, 1);
 
 const Color sendMessageButtonColor = Color.fromRGBO(72, 72, 253, 1);
+
+const Color customTextFormFieldBackColor = Color.fromRGBO(247, 244, 250, 1);
+

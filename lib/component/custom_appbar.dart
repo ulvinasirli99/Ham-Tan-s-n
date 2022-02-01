@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class CustomAppBarComponent extends StatelessWidget {
   final String? appBarText;
+  final VoidCallback? callback;
   const CustomAppBarComponent({
     Key? key,
     required this.appBarText,
+    this.callback,
   }) : super(key: key);
 
   @override
@@ -26,9 +28,10 @@ class CustomAppBarComponent extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: callback ??
+                  () {
+                    Navigator.pop(context);
+                  },
               icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
@@ -36,10 +39,10 @@ class CustomAppBarComponent extends StatelessWidget {
               ),
             ),
           ),
-           Align(
+          Align(
             alignment: Alignment.center,
             child: CustomTextView(
-              textPaste: appBarText??"Tənzimləmələr",
+              textPaste: appBarText ?? "Tənzimləmələr",
               textSize: 18,
               textColor: Colors.white,
               fontWeight: FontWeight.w400,

@@ -1,3 +1,4 @@
+import 'package:everyone_know_app/color/app_color.dart';
 import 'package:everyone_know_app/component/custom_appbar.dart';
 import 'package:everyone_know_app/component/custom_button.dart';
 import 'package:everyone_know_app/constants/constants.dart';
@@ -35,6 +36,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   formName: "Ad",
                   hintFontSize: 15,
                   formHintText: "Məsməxanım",
+                    formFieldBackColor: customTextFormFieldBackColor,
                 ),
               ),
               Padding(
@@ -45,6 +47,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   formName: "Soyad",
                   hintFontSize: 15,
                   formHintText: "Xoşduyeva",
+                  formFieldBackColor: customTextFormFieldBackColor,
                 ),
               ),
               Padding(
@@ -52,6 +55,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   top: screenHeight(context, 0.03),
                 ),
                 child: RegisterFormView(
+                  formName: "Ailə vəziyyəti",
+                  hintFontSize: 15,
+                    formFieldBackColor: customTextFormFieldBackColor,
                   childWidget: SizedBox(
                     width: double.infinity,
                     height: 45,
@@ -67,11 +73,12 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                         );
                       }).toList(),
                       hint: const Text(
-                        "Please choose a langauage",
+                        "Zəhmət olmasa seçin",
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
+                          color: textColorGrey,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       onChanged: (value) {
                         setState(() {
@@ -90,6 +97,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   formName: "Biznesiniz",
                   hintFontSize: 15,
                   formHintText: "Dərzi",
+                    formFieldBackColor: customTextFormFieldBackColor,
                 ),
               ),
               Padding(
@@ -99,6 +107,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                 child: const RegisterFormView(
                   formName: "Haqqınızda",
                   hintFontSize: 15,
+                    formFieldBackColor: customTextFormFieldBackColor,
                   formHintText: "Qısa məlumat",
                 ),
               ),

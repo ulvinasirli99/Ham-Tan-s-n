@@ -30,10 +30,13 @@ class _NavigationScreenState extends State<NavigationScreen>
             elevation: 0.0,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  color: currentIndex == 0 ? buttonColor : textColorGrey,
-                  size: 30,
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Icon(
+                    Icons.home_outlined,
+                    color: currentIndex == 0 ? buttonColor : textColorGrey,
+                    size: 30,
+                  ),
                 ),
                 label: "",
               ),

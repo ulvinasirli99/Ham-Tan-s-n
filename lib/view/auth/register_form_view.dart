@@ -11,6 +11,8 @@ class RegisterFormView extends StatelessWidget {
   final bool? maskFormatterCheck;
   final bool? editableEditText;
   final TextInputType? textInputType;
+  final Color? formFieldBackColor;
+
   const RegisterFormView({
     Key? key,
     this.formName,
@@ -20,6 +22,7 @@ class RegisterFormView extends StatelessWidget {
     this.maskFormatterCheck = false,
     this.textInputType,
     this.editableEditText = true,
+    this.formFieldBackColor,
   }) : super(key: key);
 
   @override
@@ -52,7 +55,7 @@ class RegisterFormView extends StatelessWidget {
               height: 45,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: whiteColor,
+                color: formFieldBackColor ?? whiteColor,
               ),
               padding: const EdgeInsets.only(left: 14),
               child: childWidget ??

@@ -93,27 +93,6 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen>
                     formHintText: "Misal: Dərzi, dırnaq qaynağı, geyim dükanı",
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: Row(
-                    children: const [
-                      Icon(
-                        Icons.info_outline,
-                        size: 15,
-                        color: infoIconColor,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      CustomTextView(
-                        textPaste:
-                            "Biznes adlarından sonra vergül “,” işarəti qoyulmalıdır",
-                        textSize: 11,
-                        textColor: textColorGrey,
-                      )
-                    ],
-                  ),
-                ),
                 SizedBox(
                   height: screenHeight(context, 0.07),
                 ),

@@ -33,7 +33,7 @@ class CustomStoryView extends StatelessWidget {
         left: 11,
         right: 11,
       ),
-      ratio: StoryRatio.r16_9,
+      ratio: StoryRatio.r4_3,
       stories: storyItems,
       userModel: UserModel(
         username: userName ?? "Natavan",

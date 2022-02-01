@@ -6,12 +6,14 @@ class MessageItem extends StatelessWidget {
   final String? imageOrNameText;
   final String? msgName;
   final String? msgNotif;
+  final Color? msgNoVisibleColor;
 
   const MessageItem({
     Key? key,
     this.imageOrNameText = "A",
     this.msgName,
     this.msgNotif,
+    this.msgNoVisibleColor,
   }) : super(key: key);
 
   @override
@@ -76,7 +78,7 @@ class MessageItem extends StatelessWidget {
                             child: CustomTextView(
                               textPaste: msgNotif ?? "Şəkil göndərdi",
                               textSize: 13,
-                              textColor: textColorGrey,
+                              textColor: msgNoVisibleColor ?? textColorGrey,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
