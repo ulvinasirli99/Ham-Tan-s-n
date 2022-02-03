@@ -22,6 +22,7 @@ class _MessageScreenState extends State<MessageScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(247, 244, 250, 1),
       body: SafeArea(
         child: Column(
           children: [
@@ -34,25 +35,28 @@ class _MessageScreenState extends State<MessageScreen>
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight(context, 0.06)),
+                padding: EdgeInsets.only(top: screenHeight(context, 0.05),),
                 child: ListView.builder(
                   itemCount: 3,
                   itemBuilder: (ctx, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        manualNavigatorTransition(
-                          context,
-                          const ChatScreen(),
-                        );
-                      },
-                      child: MessageItem(
-                        imageOrNameText: index > 0 ? "al" : "1",
-                        msgNotif: index == 1
-                            ? "Sabah dırnaq üçün yazılmaq istəyirəm, alınır?"
-                            : "Məsmə sabah gəlim paltarın ölcüsünü primerka edək",
-                        msgName: "Anaxanım${index + 1}",
-                        msgNoVisibleColor:
-                            index == 0 ? textColorGrey : textColor,
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 14,left: 10,right: 10),
+                      child: GestureDetector(
+                        onTap: () {
+                          manualNavigatorTransition(
+                            context,
+                            const ChatScreen(),
+                          );
+                        },
+                        child: MessageItem(
+                          imageOrNameText: index > 0 ? "al" : "1",
+                          msgNotif: index == 1
+                              ? "Sabah dırnaq üçün yazılmaq istəyirəm, alınır?"
+                              : "Məsmə sabah gəlim paltarın ölcüsünü primerka edək",
+                          msgName: "Anaxanım${index + 1}",
+                          msgNoVisibleColor:
+                              index == 0 ? textColorGrey : textColor,
+                        ),
                       ),
                     );
                   },

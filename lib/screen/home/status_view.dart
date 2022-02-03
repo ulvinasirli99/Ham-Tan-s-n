@@ -59,7 +59,9 @@ class _StatusViewScreenState extends State<StatusViewScreen> {
               height: double.infinity,
               margin: EdgeInsets.only(
                 top: screenHeight(context, 0.04),
-                bottom: screenHeight(context, 0.03),
+                bottom: widget.checkUserStory == false
+                    ? screenHeight(context, 0.3)
+                    : screenHeight(context, 0.28),
               ),
               child: CustomStoryView(
                 userName: "Natavan",
@@ -73,7 +75,9 @@ class _StatusViewScreenState extends State<StatusViewScreen> {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: EdgeInsets.only(
-                  bottom: screenHeight(context, 0.2),
+                  bottom: widget.checkUserStory == true
+                      ? screenHeight(context, 0.12)
+                      : screenHeight(context, 0.15),
                   left: 37,
                   right: 37,
                 ),
