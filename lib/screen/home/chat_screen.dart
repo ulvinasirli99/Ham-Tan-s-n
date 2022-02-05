@@ -37,10 +37,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     children: const [
                       SenderMsgItem(
                         msgTextValue: "Onda bu gun gedin baxariq",
+                        statusTextViewer: true,
                       ),
                       MySendMsgView(
                         imageUrl:
                             "https://i.pinimg.com/originals/90/18/3d/90183d7768dd3509c834b878f322aa24.jpg",
+                        statusTextViewer: true,
                         msgTextValue: "Salam necesen? Gedirik bu gun?",
                       ),
                       SenderMsgItem(
@@ -52,9 +54,11 @@ class _ChatScreenState extends State<ChatScreen> {
                         imageUrl:
                             "https://i.pinimg.com/originals/90/18/3d/90183d7768dd3509c834b878f322aa24.jpg",
                         msgTextValue: "Salam necesen? Gedirik bu gun?",
+                        statusTextViewer: true,
                       ),
                       SenderMsgItem(
                         msgTextValue: "Onda bu gun gedin baxariq",
+                        statusTextViewer: true,
                       ),
                       MySendMsgView(
                         imageUrl:

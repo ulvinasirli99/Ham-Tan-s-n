@@ -41,6 +41,7 @@ dependencies:
   story_viewer: ^0.1.0
   google_fonts: ^2.2.0
   fluttertoast: ^8.0.8
+  slide_countdown: ^0.1.1
 
 dev_dependencies:
   flutter_test:

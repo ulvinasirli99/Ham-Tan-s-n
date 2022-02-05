@@ -7,7 +7,9 @@ import 'package:everyone_know_app/view/text/text_view.dart';
 import 'package:everyone_know_app/widget/custom_back_button.dart';
 import 'package:everyone_know_app/widget/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:slide_countdown/slide_countdown.dart';
 
 class OtpVerficationScreen extends StatefulWidget {
   const OtpVerficationScreen({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class OtpVerficationScreen extends StatefulWidget {
 
 class _OtpVerficationScreenState extends State<OtpVerficationScreen>
     with ManualNavigatorMixin {
+  final defaultDuration = const Duration(minutes: 2, seconds: 0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +82,34 @@ class _OtpVerficationScreenState extends State<OtpVerficationScreen>
               const SizedBox(
                 height: 20,
               ),
-              const Center(
-                child: CustomTextView(
-                  textPaste: "Validity period: 02:00",
-                  textSize: 13,
-                  textColor: textColorGrey,
-                  fontWeight: FontWeight.w500,
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomTextView(
+                      textPaste: "Validity period: ",
+                      textSize: 13,
+                      textColor: textColorGrey,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    SlideCountdown(
+                      duration: defaultDuration,
+                      decoration: const BoxDecoration(
+                        color: screenBackground,
+                      ),
+                      textStyle: GoogleFonts.montserrat(
+                        textStyle: const TextStyle(
+                          decoration: TextDecoration.none,
+                          fontSize: 13,
+                          color: textColorGrey,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const Spacer(

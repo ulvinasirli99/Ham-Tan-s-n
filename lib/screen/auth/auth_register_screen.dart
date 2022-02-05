@@ -1,5 +1,6 @@
 import 'package:everyone_know_app/color/app_color.dart';
 import 'package:everyone_know_app/component/custom_button.dart';
+import 'package:everyone_know_app/constants/constants.dart';
 import 'package:everyone_know_app/mixin/manual_navigator.dart';
 import 'package:everyone_know_app/screen/home/navigation_screen.dart';
 import 'package:everyone_know_app/utils/size/size.dart';
@@ -17,6 +18,7 @@ class AuthRegisterScreen extends StatefulWidget {
 
 class _AuthRegisterScreenState extends State<AuthRegisterScreen>
     with ManualNavigatorMixin {
+  String? _chosenValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,11 +88,41 @@ class _AuthRegisterScreenState extends State<AuthRegisterScreen>
                 //todo Biznes FormFiled
                 Padding(
                   padding: EdgeInsets.only(
-                    top: screenHeight(context, 0.02),
+                    top: screenHeight(context, 0.03),
                   ),
-                  child: const RegisterFormView(
+                  child: RegisterFormView(
                     formName: "Biznesiniz",
-                    formHintText: "Misal: Dərzi, dırnaq qaynağı, geyim dükanı",
+                    hintFontSize: 15,
+                    formFieldBackColor: Colors.white,
+                    childWidget: SizedBox(
+                      width: double.infinity,
+                      height: 45,
+                      child: DropdownButton<String>(
+                        value: _chosenValue,
+                        underline: const SizedBox(),
+                        style: const TextStyle(color: Colors.black),
+                        items: sampleBiznesModels
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: CustomTextView(
+                              textPaste: value,
+                            ),
+                          );
+                        }).toList(),
+                        hint: const CustomTextView(
+                          textPaste: "Zəhmət olmasa seçin",
+                          textSize: 13,
+                          fontWeight: FontWeight.w500,
+                          textColor: textColorGrey,
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            _chosenValue = value;
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
