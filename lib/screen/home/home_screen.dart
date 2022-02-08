@@ -9,6 +9,7 @@ import 'package:everyone_know_app/view/auth/choose_region_view.dart';
 import 'package:everyone_know_app/view/text/text_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:story_viewer/models/story_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -179,6 +180,23 @@ class _HomeScreenState extends State<HomeScreen> with ManualNavigatorMixin {
                           context,
                           const StatusViewScreen(
                             checkUserStory: true,
+                            storyItems: [
+                              StoryItemModel(
+                                imageProvider: NetworkImage(
+                                  "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
+                                ),
+                              ),
+                              StoryItemModel(
+                                imageProvider: NetworkImage(
+                                  "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
+                                ),
+                              ),
+                              StoryItemModel(
+                                imageProvider: NetworkImage(
+                                  "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       },

@@ -8,9 +8,17 @@ import 'package:story_viewer/story_viewer.dart';
 
 class StatusViewScreen extends StatefulWidget {
   final bool? checkUserStory;
+  final List<StoryItemModel>? storyItems;
+  final String? statusUserName;
+  final String? statusUserImgUrl;
+  final String? statusImageText;
   const StatusViewScreen({
     Key? key,
     this.checkUserStory = false,
+    this.storyItems,
+    this.statusUserName,
+    this.statusUserImgUrl,
+    this.statusImageText,
   }) : super(key: key);
 
   @override
@@ -18,28 +26,10 @@ class StatusViewScreen extends StatefulWidget {
 }
 
 class _StatusViewScreenState extends State<StatusViewScreen> {
-  late List<StoryItemModel> storyItems = [];
   late StoryViewerController controller = StoryViewerController();
   @override
   void initState() {
     super.initState();
-    storyItems = const [
-      StoryItemModel(
-        imageProvider: NetworkImage(
-          "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
-        ),
-      ),
-      StoryItemModel(
-        imageProvider: NetworkImage(
-          "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
-        ),
-      ),
-      StoryItemModel(
-        imageProvider: NetworkImage(
-          "https://www.publicdomainpictures.net/pictures/420000/velka/queen-princess-redhead-cosplay-1631168365cxQ.jpg",
-        ),
-      ),
-    ];
     controller.addListener(
       onComplated: () {
         Navigator.pop(context);
@@ -64,10 +54,10 @@ class _StatusViewScreenState extends State<StatusViewScreen> {
                     : screenHeight(context, 0.28),
               ),
               child: CustomStoryView(
-                userName: "Natavan",
-                storyItems: storyItems,
+                userName: widget.statusUserName ?? "Natavan",
+                storyItems: widget.storyItems,
                 controller: controller,
-                imageUrl:
+                imageUrl: widget.statusUserImgUrl ??
                     "https://i.pinimg.com/564x/8b/30/de/8b30dead52fb583f2561eee302f6a672.jpg",
               ),
             ),
@@ -81,10 +71,11 @@ class _StatusViewScreenState extends State<StatusViewScreen> {
                   left: 37,
                   right: 37,
                 ),
-                child: const CustomTextView(
-                  textPaste:
+                child: CustomTextView(
+                  textPaste: widget.statusImageText ??
                       """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec dolor tempus, sollicitudin enim et, maximus massa.""",
                   textSize: 16,
+                  textAlign: TextAlign.start,
                   textColor: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),

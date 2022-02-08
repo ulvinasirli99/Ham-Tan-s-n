@@ -12,6 +12,7 @@ class RegisterFormView extends StatelessWidget {
   final bool? editableEditText;
   final TextInputType? textInputType;
   final Color? formFieldBackColor;
+  final TextEditingController? controller;
 
   const RegisterFormView({
     Key? key,
@@ -23,6 +24,7 @@ class RegisterFormView extends StatelessWidget {
     this.textInputType,
     this.editableEditText = true,
     this.formFieldBackColor,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -62,6 +64,7 @@ class RegisterFormView extends StatelessWidget {
                   TextFormField(
                     keyboardType: textInputType ?? TextInputType.text,
                     enabled: editableEditText,
+                    controller: controller,
                     inputFormatters: maskFormatterCheck == true
                         ? [
                             maskFormatter,

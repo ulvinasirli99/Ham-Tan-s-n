@@ -7,6 +7,7 @@ import 'package:everyone_know_app/utils/size/size.dart';
 import 'package:everyone_know_app/view/auth/choose_region_view.dart';
 import 'package:everyone_know_app/view/text/text_view.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ChooseRegionScreen extends StatefulWidget {
   const ChooseRegionScreen({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class ChooseRegionScreen extends StatefulWidget {
 class _ChooseRegionScreenState extends State<ChooseRegionScreen>
     with ManualNavigatorMixin {
   bool visibleSpinner = false;
+  bool isChoosed = false;
   int lastIndex = -1;
   @override
   Widget build(BuildContext context) {
@@ -116,6 +118,7 @@ class _ChooseRegionScreenState extends State<ChooseRegionScreen>
                             onTap: () {
                               setState(() {
                                 lastIndex = index;
+                                isChoosed = true;
                               });
                             },
                             child: regionListItem(
@@ -138,10 +141,16 @@ class _ChooseRegionScreenState extends State<ChooseRegionScreen>
                 ),
                 child: CustomButton(
                   callback: () {
-                    manualNavigatorTransition(
-                      context,
-                      const OtpScreen(),
-                    );
+                    if (isChoosed == false) {
+                      Fluttertoast.showToast(
+                          gravity: ToastGravity.TOP,
+                          msg: "Zəhmət olmasa regionu seçin");
+                    } else {
+                      manualNavigatorTransition(
+                        context,
+                        const OtpScreen(),
+                      );
+                    }
                   },
                   buttonTextPaste: "Davam et",
                 ),

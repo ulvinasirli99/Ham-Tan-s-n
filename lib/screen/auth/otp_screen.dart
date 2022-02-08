@@ -19,6 +19,7 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
   final formGlobalKey = GlobalKey<FormState>();
+  TextEditingController otpController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +84,7 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                               Expanded(
                                 child: TextFormField(
                                   keyboardType: TextInputType.number,
+                                  controller: otpController,
                                   inputFormatters: [
                                     maskFormatter,
                                   ],
@@ -121,10 +123,17 @@ class _OtpScreenState extends State<OtpScreen> with ManualNavigatorMixin {
                           child: CustomButton(
                             buttonTextPaste: "Göndər",
                             callback: () {
-                              manualNavigatorTransition(
-                                context,
-                                const OtpVerficationScreen(),
-                              );
+                              if (otpController.text.length < 9) {
+                                Fluttertoast.showToast(
+                                  gravity: ToastGravity.TOP,
+                                  msg: "Zəhmət olmasa nömrənizi daxil edin",
+                                );
+                              } else {
+                                manualNavigatorTransition(
+                                  context,
+                                  const OtpVerficationScreen(),
+                                );
+                              }
                             },
                           ),
                         ),

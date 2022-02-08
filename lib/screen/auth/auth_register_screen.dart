@@ -8,6 +8,7 @@ import 'package:everyone_know_app/view/auth/register_form_view.dart';
 import 'package:everyone_know_app/view/text/text_view.dart';
 import 'package:everyone_know_app/widget/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthRegisterScreen extends StatefulWidget {
   const AuthRegisterScreen({Key? key}) : super(key: key);
@@ -18,126 +19,143 @@ class AuthRegisterScreen extends StatefulWidget {
 
 class _AuthRegisterScreenState extends State<AuthRegisterScreen>
     with ManualNavigatorMixin {
-  String? _chosenValue;
+  String? chosenValue;
+  TextEditingController nameCtr = TextEditingController();
+  TextEditingController surNameCtr = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  bool choseTypeCheck = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: ResponsiveWidget(
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            margin: EdgeInsets.only(
-              top: screenHeight(context, 0.2),
-            ),
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(247, 247, 247, 1),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16.5),
-                topLeft: Radius.circular(16.5),
+        child: Form(
+          key: formKey,
+          child: ResponsiveWidget(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              margin: EdgeInsets.only(
+                top: screenHeight(context, 0.2),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(
-                    left: 22,
-                    top: 34,
-                  ),
-                  child: CustomTextView(
-                    textPaste: "Qeydiyyat",
-                    textSize: 25,
-                    fontWeight: FontWeight.w600,
-                    textColor: textColor,
-                  ),
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(247, 247, 247, 1),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(16.5),
+                  topLeft: Radius.circular(16.5),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    left: 22,
-                    top: 25,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      left: 22,
+                      top: 34,
+                    ),
+                    child: CustomTextView(
+                      textPaste: "Qeydiyyat",
+                      textSize: 25,
+                      fontWeight: FontWeight.w600,
+                      textColor: textColor,
+                    ),
                   ),
-                  child: CustomTextView(
-                    textPaste: "Məlumatlarınızı əlavə edin",
-                    textSize: 13,
-                    fontWeight: FontWeight.w500,
-                    textColor: textColor,
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      left: 22,
+                      top: 25,
+                    ),
+                    child: CustomTextView(
+                      textPaste: "Məlumatlarınızı əlavə edin",
+                      textSize: 13,
+                      fontWeight: FontWeight.w500,
+                      textColor: textColor,
+                    ),
                   ),
-                ),
-                // todo Name FormFiled
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: screenHeight(context, 0.03),
+                  // todo Name FormFiled
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: screenHeight(context, 0.03),
+                    ),
+                    child: RegisterFormView(
+                      formName: "Ad",
+                      controller: nameCtr,
+                      formHintText: "Adınızı daxil edin",
+                    ),
                   ),
-                  child: const RegisterFormView(
-                    formName: "Ad",
-                    formHintText: "Adınızı daxil edin",
+                  // todo Surname Forfield
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: screenHeight(context, 0.02),
+                    ),
+                    child: RegisterFormView(
+                      formName: "Soyad",
+                      controller: surNameCtr,
+                      formHintText: "Soyadınızı daxil edin",
+                    ),
                   ),
-                ),
-                // todo Surname Forfield
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: screenHeight(context, 0.02),
-                  ),
-                  child: const RegisterFormView(
-                    formName: "Soyad",
-                    formHintText: "Soyadınızı daxil edin",
-                  ),
-                ),
-                //todo Biznes FormFiled
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: screenHeight(context, 0.03),
-                  ),
-                  child: RegisterFormView(
-                    formName: "Biznesiniz",
-                    hintFontSize: 15,
-                    formFieldBackColor: Colors.white,
-                    childWidget: SizedBox(
-                      width: double.infinity,
-                      height: 45,
-                      child: DropdownButton<String>(
-                        value: _chosenValue,
-                        underline: const SizedBox(),
-                        style: const TextStyle(color: Colors.black),
-                        items: sampleBiznesModels
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: CustomTextView(
-                              textPaste: value,
-                            ),
-                          );
-                        }).toList(),
-                        hint: const CustomTextView(
-                          textPaste: "Zəhmət olmasa seçin",
-                          textSize: 13,
-                          fontWeight: FontWeight.w500,
-                          textColor: textColorGrey,
+                  //todo Biznes FormFiled
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: screenHeight(context, 0.03),
+                    ),
+                    child: RegisterFormView(
+                      formName: "Biznesiniz",
+                      hintFontSize: 15,
+                      formFieldBackColor: Colors.white,
+                      childWidget: SizedBox(
+                        width: double.infinity,
+                        height: 45,
+                        child: DropdownButton<String>(
+                          value: chosenValue,
+                          underline: const SizedBox(),
+                          style: const TextStyle(color: Colors.black),
+                          items: sampleBiznesModels
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: CustomTextView(
+                                textPaste: value,
+                              ),
+                            );
+                          }).toList(),
+                          hint: const CustomTextView(
+                            textPaste: "Zəhmət olmasa seçin",
+                            textSize: 13,
+                            fontWeight: FontWeight.w500,
+                            textColor: textColorGrey,
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              chosenValue = value;
+                              choseTypeCheck = true;
+                            });
+                          },
                         ),
-                        onChanged: (value) {
-                          setState(() {
-                            _chosenValue = value;
-                          });
-                        },
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: screenHeight(context, 0.07),
-                ),
-                CustomButton(
-                  buttonTextPaste: "Başla",
-                  callback: () {
-                    manualNavigatorTransition(
-                      context,
-                      const NavigationScreen(),
-                    );
-                  },
-                ),
-              ],
+                  SizedBox(
+                    height: screenHeight(context, 0.07),
+                  ),
+                  CustomButton(
+                    buttonTextPaste: "Başla",
+                    callback: () {
+                      if (nameCtr.text.length < 4 ||
+                          surNameCtr.text.length < 4 ||
+                          choseTypeCheck == false) {
+                        Fluttertoast.showToast(
+                            msg: "Zəhmət olmasa bütün xanaları doldurun");
+                      } else {
+                        manualNavigatorTransition(
+                          context,
+                          const NavigationScreen(),
+                        );
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
