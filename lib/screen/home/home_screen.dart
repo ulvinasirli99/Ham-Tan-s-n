@@ -1,7 +1,7 @@
 import 'package:everyone_know_app/color/app_color.dart';
-import 'package:everyone_know_app/cubit/navigation_cubit_cubit.dart';
 import 'package:everyone_know_app/local/fake_locations.dart';
 import 'package:everyone_know_app/mixin/manual_navigator.dart';
+import 'package:everyone_know_app/domain/state/navigation_cubit/navigation_cubit_cubit.dart';
 import 'package:everyone_know_app/screen/home/status_view.dart';
 import 'package:everyone_know_app/utils/enums/navbar_item.dart';
 import 'package:everyone_know_app/utils/size/size.dart';

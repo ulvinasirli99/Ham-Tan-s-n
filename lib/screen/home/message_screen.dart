@@ -1,6 +1,6 @@
 import 'package:everyone_know_app/color/app_color.dart';
 import 'package:everyone_know_app/component/custom_appbar.dart';
-import 'package:everyone_know_app/cubit/navigation_cubit_cubit.dart';
+import 'package:everyone_know_app/domain/state/navigation_cubit/navigation_cubit_cubit.dart';
 import 'package:everyone_know_app/mixin/manual_navigator.dart';
 import 'package:everyone_know_app/utils/enums/navbar_item.dart';
 import 'package:everyone_know_app/utils/size/size.dart';
@@ -35,12 +35,15 @@ class _MessageScreenState extends State<MessageScreen>
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(top: screenHeight(context, 0.05),),
+                padding: EdgeInsets.only(
+                  top: screenHeight(context, 0.05),
+                ),
                 child: ListView.builder(
                   itemCount: 3,
                   itemBuilder: (ctx, index) {
                     return Padding(
-                      padding: const EdgeInsets.only(top: 14,left: 10,right: 10),
+                      padding:
+                          const EdgeInsets.only(top: 14, left: 10, right: 10),
                       child: GestureDetector(
                         onTap: () {
                           manualNavigatorTransition(

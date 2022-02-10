@@ -78,7 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       ),
                     ),
                   ),
-                  const Align(
+                   Align(
                     alignment: Alignment.topCenter,
                     child: ProfileEditImage(),
                   ),

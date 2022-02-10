@@ -1,5 +1,5 @@
 import 'package:everyone_know_app/color/app_color.dart';
-import 'package:everyone_know_app/cubit/navigation_cubit_cubit.dart';
+import 'package:everyone_know_app/domain/state/navigation_cubit/navigation_cubit_cubit.dart';
 import 'package:everyone_know_app/mixin/manual_navigator.dart';
 import 'package:everyone_know_app/screen/profile/profile_screen.dart';
 import 'package:everyone_know_app/screen/home/addStatus_screen.dart';

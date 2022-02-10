@@ -36,12 +36,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   mask_text_input_formatter: ^2.1.0
   pin_code_fields: ^7.3.0
+  http: ^0.13.4
+  dio: ^4.0.4
+  path: ^1.8.0
+  image_picker: ^0.8.4+7
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   story_viewer: ^0.1.0
   google_fonts: ^2.2.0
   fluttertoast: ^8.0.8
   slide_countdown: ^0.1.1
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:
